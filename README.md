@@ -19,10 +19,10 @@
             }
             ],
             "env" : [
-            {
-                "name": "QDRANT__SERVICE__API_KEY",
-                "value": "!@#123QWEqwe"
-            }
+                {
+                    "name": "QDRANT__SERVICE__API_KEY",
+                    "value": "!@#123QWEqwe"
+                }
             ]
         }
 }
