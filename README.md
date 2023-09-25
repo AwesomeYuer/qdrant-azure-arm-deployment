@@ -1,5 +1,5 @@
 
-容器 docker `QDRANT__SERVICE__API_KEY` 环境变量
+# 容器 docker `QDRANT__SERVICE__API_KEY` 环境变量
 
 ```json
 {
@@ -29,12 +29,17 @@
 
 ```
 
+# 为 `container apps` 配置网络安全组入栈规则
+ - 刚运行时内网其他应用跨 `VNET` 访问正常，过一段时间就访问不了了
+
+   ![image](https://github.com/AwesomeYuer/qdrant-azure-arm-deployment/assets/1026479/14c86d54-7bd1-44fa-a61e-fb7c56d3ae47)
+
+# 一键点击下面按钮修改魔板，部署 `qdrant container apps`:
+
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAwesomeYuer%2Fqdrant-azure-arm-deployment%2Fmain%2FAzure-Container-Apps%2FARM-templates%2Fqdrant-aca-deploy.json)
 
 
-
-
-
+-------------------------------------------------------
 
 # Qdrant Vector Database on Azure Cloud
 
