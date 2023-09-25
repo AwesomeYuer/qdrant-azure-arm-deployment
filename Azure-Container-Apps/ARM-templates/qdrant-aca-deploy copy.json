@@ -194,11 +194,55 @@
                           "volumeName": "qdrantstoragevol",
                           "mountPath": "/qdrant/storage"
                         }
-                      ],
-                      "env" : [
+                      ]
+                    }
+                  ],
+                  "scale": {
+                    "minReplicas": 1,
+                    "maxReplicas": 1
+                  },
+                  "volumes": [
+                    {
+                      "name": "qdrantstoragevol",
+                      "storageName": "qdrantstoragemount",
+                      "storageType": "AzureFile"
+                    }
+                  ]
+                }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.App/managedEnvironments', parameters('environmentName'))]",
+                "[resourceId('Microsoft.App/managedEnvironments/storages', split(format('{0}/qdrantstoragemount', parameters('environmentName')), '/')[0], split(format('{0}/qdrantstoragemount', parameters('environmentName')), '/')[1])]"
+              ]
+            },
+            {
+              "type": "Microsoft.App/containerApps",
+              "apiVersion": "2022-11-01-preview",
+              "name": "[format('{0}grpc', parameters('environmentName'))]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('environmentName'))]",
+                "configuration": {
+                  "ingress": {
+                    "external": true,
+                    "transport": "TCP",
+                    "targetPort": 6334,
+                    "exposedPort": 6334
+                  }
+                },
+                "template": {
+                  "containers": [
+                    {
+                      "name": "qdrantdbcontainerapp",
+                      "image": "qdrant/qdrant",
+                      "resources": {
+                        "cpu": 2,
+                        "memory": "4Gi"
+                      },
+                      "volumeMounts": [
                         {
-                          "name": "QDRANT__SERVICE__API_KEY",
-                          "value": "!@#123QWEqwe"
+                          "volumeName": "qdrantstoragevol",
+                          "mountPath": "/qdrant/storage"
                         }
                       ]
                     }

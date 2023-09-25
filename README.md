@@ -1,3 +1,41 @@
+
+容器 docker `QDRANT__SERVICE__API_KEY` 环境变量
+
+```json
+{
+    "template": {
+        "containers": [
+        {
+            "name": "qdrantapicontainerapp",
+            "image": "qdrant/qdrant",
+            "resources": {
+            "cpu": 1,
+            "memory": "2Gi"
+            },
+            "volumeMounts": [
+            {
+                "volumeName": "qdrantstoragevol",
+                "mountPath": "/qdrant/storage"
+            }
+            ],
+            "env" : [
+            {
+                "name": "QDRANT__SERVICE__API_KEY",
+                "value": "!@#123QWEqwe"
+            }
+            ]
+        }
+}
+
+```
+
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fmain%2FAzure-Kubernetes-Svc%2Faks-arm-deploy.json)
+
+
+
+
+
+
 # Qdrant Vector Database on Azure Cloud
 
 <img src="./img/qdrant-plus-azure.png" width="480" height="300" />
