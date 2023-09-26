@@ -55,7 +55,10 @@
    ![image](https://github.com/AwesomeYuer/qdrant-azure-arm-deployment/assets/1026479/fafdc369-8dc8-4ff7-baed-73c4509693b7)
 
 
-# 一键点击下面按钮修改魔板，部署 `qdrant container apps`:
+# 一键点击下面按钮
+  
+  - 修改魔板
+  - 部署 `qdrant container apps`:
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAwesomeYuer%2Fqdrant-azure-arm-deployment%2Fmain%2FAzure-Container-Apps%2FARM-templates%2Fqdrant-aca-deploy.json)
 
