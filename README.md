@@ -1,5 +1,5 @@
 # 本方案旨在解决 `Azure Portal` 手工部署 `qdrant container apps` 运行一段时间数据消失的问题
-   - 未找到原因
+   - 未找到原因, 高度怀疑 `Azure conatiner apps` By Design
    - Qdrant Vector DB with Volume on Azure
      Azure 上带有卷的 Qdrant Vector DB
      
