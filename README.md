@@ -16,37 +16,39 @@
   
         ```sh
         docker run -e api_key=xxxxxxxxxxxxxxxxx
-        ``` 
-   ，- 魔板指定 `QDRANT__SERVICE__API_KEY` 环境变量, 限制为使用 `api-key` 访问
+        ```
+        
+    - 魔板指定 `QDRANT__SERVICE__API_KEY` 环境变量, 限制为使用 `api-key` 访问
    
-```json
-{
-  "template": {
-    "containers": [
+      ```json
       {
-        "name": "qdrantapicontainerapp",
-        "image": "qdrant/qdrant",
-        "resources": {
-          "cpu": 2,
-          "memory": "4Gi"
-        },
-        "volumeMounts": [
-          {
-            "volumeName": "qdrantstoragevol",
-            "mountPath": "/qdrant/storage"
-          }
-        ],
-        "env": [
-          {
-            "name": "QDRANT__SERVICE__API_KEY",
-            "value": "!@#123QWEqwe"
-          }
-        ]
+        "template": {
+          "containers": [
+            {
+              "name": "qdrantapicontainerapp",
+              "image": "qdrant/qdrant",
+              "resources": {
+                "cpu": 2,
+                "memory": "4Gi"
+              },
+              "volumeMounts": [
+                {
+                  "volumeName": "qdrantstoragevol",
+                  "mountPath": "/qdrant/storage"
+                }
+              ],
+              "env": [
+                {
+                  "name": "QDRANT__SERVICE__API_KEY",
+                  "value": "!@#123QWEqwe"
+                }
+              ]
+            }
+          ]
+        }
       }
-    ]
-  }
-}
-```
+      ```
+
 # 为 Azure `qdrant container apps` 配置 `网络安全组(NSG)` 入栈规则
  - 刚运行时，内网其他应用跨 `VNET` 访问正常，过一段时间就访问不了了
 
