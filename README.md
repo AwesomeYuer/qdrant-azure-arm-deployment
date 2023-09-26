@@ -9,7 +9,11 @@
 
 # 安全起见：修改魔板，指定 `QDRANT__SERVICE__API_KEY` 环境变量, 限制为使用 `api-key` 访问
    
-     相当于容器运行方式指定环境变量参数 `docker run -e api_key=xxxxxxxxxxxxxxxxx` 
+  相当于容器运行方式指定环境变量参数 
+  
+  ```sh
+  docker run -e api_key=xxxxxxxxxxxxxxxxx
+  ``` 
 
 https://qdrant.tech/documentation/guides/configuration/
 
