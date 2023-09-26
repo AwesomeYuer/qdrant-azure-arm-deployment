@@ -1,6 +1,12 @@
 # 本方案旨在解决 `Azure Portal` 手工部署 `qdrant container apps` 运行一段时间数据消失的问题
    - 未找到原因
    - 利用如下 `arm` 魔板部署，可能是因为指定了专用的 `File Storage Account` 所以不再丢失数据
+     
+     Qdrant Vector DB with Volume on Azure
+     
+     Azure 上带有卷的 Qdrant Vector DB
+     
+     https://github.com/AwesomeYuer/qdrant-azure-arm-deployment/tree/main/Azure-Container-Apps#qdrant-vector-db-with-volume-on-azure
 
 # 安全起见：相当于容器 `docker run` 指定 `QDRANT__SERVICE__API_KEY` 环境变量
 
