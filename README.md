@@ -2,7 +2,9 @@
    - 未找到原因
    - 利用如下 `arm` 魔板部署，可能是因为指定了专用的 `File Storage Account` 所以不再丢失数据
 
-# 容器 docker `QDRANT__SERVICE__API_KEY` 环境变量
+# 安全起见：相当于容器 `docker run` 指定 `QDRANT__SERVICE__API_KEY` 环境变量
+
+https://qdrant.tech/documentation/guides/configuration/
 
 ```json
 {
