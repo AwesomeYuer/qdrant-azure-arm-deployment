@@ -10,8 +10,11 @@
 # 安全起见，配置使用 `api-key` 访问
   - 修改魔板
     - 参阅
-    
-      https://qdrant.tech/documentation/guides/configuration/   
+
+      https://qdrant.tech/documentation/guides/configuration/
+
+      https://github.com/AwesomeYuer/qdrant-azure-arm-deployment/tree/main/Azure-Container-Apps
+
     - 相当于容器运行方式指定环境变量参数 
   
         ```sh
