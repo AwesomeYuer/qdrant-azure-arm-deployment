@@ -45,7 +45,7 @@ https://qdrant.tech/documentation/guides/configuration/
 
 ```
 
-# 为 `qdrant container apps` 配置 `网络安全组(NSG)` 入栈规则
+# 为 Azure `qdrant container apps` 配置 `网络安全组(NSG)` 入栈规则
  - 刚运行时，内网其他应用跨 `VNET` 访问正常，过一段时间就访问不了了
 
    ![image](https://github.com/AwesomeYuer/qdrant-azure-arm-deployment/assets/1026479/fafdc369-8dc8-4ff7-baed-73c4509693b7)
