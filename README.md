@@ -1,53 +1,52 @@
-# 本方案旨在解决 `Azure Portal` 手工部署 `qdrant container apps` 运行一段时间数据消失的问题
-   - 不确定原因
-      - 高度怀疑 `Azure conatiner apps` By Design 运行不带卷 Volume
+# 本方案目的
+   - 旨在解决 `Azure Portal` 手工部署 `qdrant container apps` 运行一段时间数据消失的问题
+     - 不确定原因，高度怀疑 `Azure conatiner apps` By Design 运行不带卷 Volume
+     - Qdrant Vector DB with Volume on Azure
+       - Azure 上带有卷的 Qdrant Vector DB
+         
+         https://github.com/AwesomeYuer/qdrant-azure-arm-deployment/tree/main/Azure-Container-Apps#qdrant-vector-db-with-volume-on-azure
+       - 利用如下 `arm` 魔板 `conatiner apps` 部署，可能是因为带卷 Volume, 也指定了专用的 `File Storage Account` 所以不再丢失数据
 
-   - Qdrant Vector DB with Volume on Azure
-
-     - Azure 上带有卷的 Qdrant Vector DB
-       
-       https://github.com/AwesomeYuer/qdrant-azure-arm-deployment/tree/main/Azure-Container-Apps#qdrant-vector-db-with-volume-on-azure
-
-     - 利用如下 `arm` 魔板 `conatiner apps` 部署，可能是因为带卷 Volume, 也指定了专用的 `File Storage Account` 所以不再丢失数据
-
-# 安全起见：修改魔板，指定 `QDRANT__SERVICE__API_KEY` 环境变量, 限制为使用 `api-key` 访问
-   
-  相当于容器运行方式指定环境变量参数 
+# 安全起见
+  - 修改魔板
+    - 参阅
+    
+      https://qdrant.tech/documentation/guides/configuration/   
+    - 相当于容器运行方式指定环境变量参数 
   
-  ```sh
-  docker run -e api_key=xxxxxxxxxxxxxxxxx
-  ``` 
-
-https://qdrant.tech/documentation/guides/configuration/
-
+        ```sh
+        docker run -e api_key=xxxxxxxxxxxxxxxxx
+        ``` 
+   ，- 魔板指定 `QDRANT__SERVICE__API_KEY` 环境变量, 限制为使用 `api-key` 访问
+   
 ```json
 {
-    "template": {
-        "containers": [
-        {
-            "name": "qdrantapicontainerapp",
-            "image": "qdrant/qdrant",
-            "resources": {
-            "cpu": 2,
-            "memory": "4Gi"
-            },
-            "volumeMounts": [
-            {
-                "volumeName": "qdrantstoragevol",
-                "mountPath": "/qdrant/storage"
-            }
-            ],
-            "env" : [
-                {
-                    "name": "QDRANT__SERVICE__API_KEY",
-                    "value": "!@#123QWEqwe"
-                }
-            ]
-        }
+  "template": {
+    "containers": [
+      {
+        "name": "qdrantapicontainerapp",
+        "image": "qdrant/qdrant",
+        "resources": {
+          "cpu": 2,
+          "memory": "4Gi"
+        },
+        "volumeMounts": [
+          {
+            "volumeName": "qdrantstoragevol",
+            "mountPath": "/qdrant/storage"
+          }
+        ],
+        "env": [
+          {
+            "name": "QDRANT__SERVICE__API_KEY",
+            "value": "!@#123QWEqwe"
+          }
+        ]
+      }
+    ]
+  }
 }
-
 ```
-
 # 为 Azure `qdrant container apps` 配置 `网络安全组(NSG)` 入栈规则
  - 刚运行时，内网其他应用跨 `VNET` 访问正常，过一段时间就访问不了了
 
