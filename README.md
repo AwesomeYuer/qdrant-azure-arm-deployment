@@ -7,7 +7,7 @@
          https://github.com/AwesomeYuer/qdrant-azure-arm-deployment/tree/main/Azure-Container-Apps#qdrant-vector-db-with-volume-on-azure
        - 利用如下 `arm` 魔板 `conatiner apps` 部署，可能是因为带卷 Volume, 也指定了专用的 `File Storage Account` 所以不再丢失数据
 
-# 安全起见使用 `api-key` 访问
+# 安全起见配置使用 `api-key` 访问
   - 修改魔板
     - 参阅
     
